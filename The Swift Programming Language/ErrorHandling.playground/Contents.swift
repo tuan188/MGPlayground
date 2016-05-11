@@ -60,6 +60,18 @@ func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) throws {
 var vendingMachine = VendingMachine()
 vendingMachine.coinsDeposited = 8
 
+do {
+    try buyFavoriteSnack("Alice", vendingMachine: vendingMachine)
+}
+catch VendingMachineError.InvalidSelection {
+    print("Invalid selection")
+}
+catch VendingMachineError.OutOfStock {
+    print("Out of stock")
+}
+catch VendingMachineError.InsufficientFunds(let coinsNeeded) {
+    print("Coins needed \(coinsNeeded)")
+}
 
 
 
